@@ -1,0 +1,58 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Agenda de Contatos</h1>
+
+    <form id="contatoForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required>
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" required>
+        <button type="button" onclick="adicionarContato()">Cadastrar</button>
+    </form>
+
+    <table id="tabelaContatos">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </tr>
+    </table>
+
+    <script>
+        function adicionarContato() {
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+
+            if (nome.trim() === '' || telefone.trim() === '') {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            const tabelaContatos = document.getElementById('tabelaContatos');
+            const newRow = tabelaContatos.insertRow(-1);
+
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+
+            cell1.innerHTML = nome;
+            cell2.innerHTML = telefone;
+
+            // Limpar os campos do formulário após o cadastro
+            document.getElementById('nome').value = '';
+            document.getElementById('telefone').value = '';
+        }
+    </script>
+</body>
+</html>
